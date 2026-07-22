@@ -108,6 +108,7 @@ function ensureTranscriptItem(itemId, role, previousItemId = undefined) {
     itemId,
     role,
     previousItemId,
+    timestamp: new Date().toISOString(),
     element: wrapper,
     contentElement: content,
     text: "",
@@ -436,7 +437,10 @@ function buildTextLog(recordingResult) {
       record.role === "user" ? "Participant" : activeModeProfile.assistantName;
     const fallback =
       record.role === "user" ? "[Transcription unavailable]" : "[Transcript unavailable]";
-    lines.push("", `${speaker}: ${record.text.trim() || fallback}`);
+    lines.push(
+      "",
+      `[${record.timestamp}] ${speaker}: ${record.text.trim() || fallback}`,
+    );
   }
   return `${lines.join("\n")}\n`;
 }

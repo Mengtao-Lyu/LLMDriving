@@ -2,7 +2,7 @@
 
 This project is a minimal local voice assistant built with the OpenAI Realtime API. The browser captures microphone audio and uses WebRTC for low-latency speech-to-speech conversation. The permanent OpenAI API key stays in the local Python server and is never included in browser code or sent to the iPad.
 
-The application also records the complete mixed conversation (participant and assistant) and saves both its audio and ordered text transcript locally after the user selects **End Conversation**. Three mutually exclusive assistant modes provide cognitive, neutral, or affective support.
+The application also records the complete mixed conversation (participant and assistant) and saves both its audio and ordered, per-utterance timestamped text transcript locally after the user selects **End Conversation**. Three mutually exclusive assistant modes provide cognitive, neutral, or affective support. The model behavior profiles are maintained in `assistant_modes.py`.
 
 ## Requirements
 
