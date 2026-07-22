@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>OpenAI Voice Assistant Demo</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1>OpenAI Voice Assistant Demo</h1>
+      <p id="status" role="status">Not connected.</p>
+
+      <div class="field">
+        <label for="participantId">Participant ID</label>
+        <input
+          id="participantId"
+          name="participantId"
+          type="text"
+          inputmode="text"
+          autocomplete="off"
+          maxlength="64"
+          pattern="[A-Za-z0-9][A-Za-z0-9_-]{0,63}"
+          aria-describedby="participantIdHint"
+          required
+        />
+        <p id="participantIdHint" class="hint">
+          Use 1-64 letters, numbers, underscores, or hyphens.
+        </p>
+      </div>
+
+      <fieldset id="assistantModeFieldset">
+        <legend>Assistant Mode</legend>
+        <label class="mode-option">
+          <input type="radio" name="assistantMode" value="cognitive" />
+          <span><strong>Cognitive</strong> — direct knowledge and logical support from Logan</span>
+        </label>
+        <label class="mode-option">
+          <input type="radio" name="assistantMode" value="neutral" checked />
+          <span><strong>Neutral</strong> — balanced default assistance from Nomi</span>
+        </label>
+        <label class="mode-option">
+          <input type="radio" name="assistantMode" value="affective" />
+          <span><strong>Affective</strong> — warm emotional support from Sunny</span>
+        </label>
+      </fieldset>
+
+      <div class="actions">
+        <button id="startButton" type="button">Start Conversation</button>
+        <button id="stopButton" type="button" disabled>End Conversation</button>
+      </div>
+
+      <p class="hint">
+        Starting a conversation records both the participant and assistant. Confirm
+        participant consent before starting, and use End Conversation to save the audio
+        recording and text log.
+      </p>
+      <p id="recordingStatus" role="status">Recording has not started.</p>
+
+      <section aria-labelledby="transcriptHeading">
+        <h2 id="transcriptHeading">Conversation Transcript</h2>
+        <div id="transcript" aria-live="polite"></div>
+      </section>
+
+      <details>
+        <summary>Connection Log</summary>
+        <pre id="eventLog"></pre>
+      </details>
+
+      <audio id="remoteAudio" autoplay playsinline></audio>
+    </main>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

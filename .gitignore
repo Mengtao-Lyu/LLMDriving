@@ -1,0 +1,9 @@
+.env
+__pycache__/
+*.py[cod]
+.DS_Store
+certs/
+Audio_Record/*
+!Audio_Record/.gitkeep
+Txt_Log/*
+!Txt_Log/.gitkeep
