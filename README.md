@@ -75,6 +75,16 @@ Recordings and text logs are excluded from Git by default. Always obtain partici
 
 Each assistant begins with its specified introduction and all modes are instructed to keep every response between 20 and 30 English words. These are model instructions, so validate adherence empirically before using the demo for controlled research. The complete behavior specification is in `Agent.md`.
 
+All three modes share these explicit Realtime session settings:
+
+```text
+reasoning.effort: low
+audio.input.noise_reduction.type: far_field
+temperature: 0.8
+```
+
+These global values are maintained in `assistant_modes.py` and are included in every session request.
+
 ## Transcript ordering
 
 OpenAI input transcription runs asynchronously from Realtime response generation. The interface creates transcript entries when conversation items are committed or added, then fills in the transcription when it arrives. This preserves participant/assistant turn order even when a participant transcription completes after the assistant has started responding.

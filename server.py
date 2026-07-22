@@ -22,7 +22,7 @@ from typing import BinaryIO, Dict, Optional
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
-from assistant_modes import ASSISTANT_MODES
+from assistant_modes import ASSISTANT_MODES, GLOBAL_REALTIME_SETTINGS
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -152,8 +152,15 @@ def build_session_config(settings: Settings, assistant_mode: str = "neutral") ->
         "model": settings.model,
         "output_modalities": ["audio"],
         "instructions": mode["instructions"],
+        "reasoning": {
+            "effort": GLOBAL_REALTIME_SETTINGS["reasoning_effort"],
+        },
+        "temperature": GLOBAL_REALTIME_SETTINGS["temperature"],
         "audio": {
             "input": {
+                "noise_reduction": {
+                    "type": GLOBAL_REALTIME_SETTINGS["noise_reduction"],
+                },
                 "transcription": {
                     "model": settings.transcription_model,
                     "language": settings.input_language,

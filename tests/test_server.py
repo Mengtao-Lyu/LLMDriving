@@ -40,6 +40,9 @@ class ServerTests(unittest.TestCase):
         self.assertEqual(payload["output_modalities"], ["audio"])
         self.assertEqual(payload["audio"]["output"]["voice"], "marin")
         self.assertEqual(payload["audio"]["output"]["speed"], 1.0)
+        self.assertEqual(payload["reasoning"]["effort"], "low")
+        self.assertEqual(payload["audio"]["input"]["noise_reduction"]["type"], "far_field")
+        self.assertEqual(payload["temperature"], 0.8)
         self.assertEqual(payload["audio"]["input"]["transcription"]["language"], "en")
         self.assertIn("20 to 30 English words", payload["instructions"])
         self.assertEqual(
@@ -61,6 +64,12 @@ class ServerTests(unittest.TestCase):
                 self.assertEqual(mode["assistant_name"], assistant_name)
                 self.assertEqual(payload["audio"]["output"]["voice"], voice)
                 self.assertEqual(payload["audio"]["output"]["speed"], speed)
+                self.assertEqual(payload["reasoning"]["effort"], "low")
+                self.assertEqual(
+                    payload["audio"]["input"]["noise_reduction"]["type"],
+                    "far_field",
+                )
+                self.assertEqual(payload["temperature"], 0.8)
                 self.assertGreaterEqual(len(mode["opening"].split()), 20)
                 self.assertLessEqual(len(mode["opening"].split()), 30)
 

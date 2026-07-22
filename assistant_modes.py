@@ -1,8 +1,16 @@
-"""Behavior profiles for the three Realtime voice assistants.
+"""Global Realtime settings and behavior profiles for the voice assistants.
 
-Edit this file to maintain assistant names, opening messages, speech speeds, and
-model instructions without changing the web server implementation.
+Edit this file to maintain shared model settings, assistant names, opening
+messages, speech speeds, and model instructions without changing the web
+server implementation.
 """
+
+
+GLOBAL_REALTIME_SETTINGS = {
+    "reasoning_effort": "low",
+    "noise_reduction": "far_field",
+    "temperature": 0.8,
+}
 
 
 ASSISTANT_MODES = {

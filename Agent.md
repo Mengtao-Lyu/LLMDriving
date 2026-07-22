@@ -78,6 +78,7 @@ Sunny provides affective support like a caring friend.
 
 ## Implementation notes
 
+- All modes use the same explicit Realtime settings: `reasoning.effort` is `low`, `audio.input.noise_reduction.type` is `far_field`, and `temperature` is `0.8`.
 - The server owns the mode instructions, voice selection, and speech speed configuration.
 - OpenAI Realtime supports a numeric output speed setting. Pitch, intonation, and pause style are guided through the session instructions because the session configuration does not expose a numeric pitch control.
 - The exact opening is requested as a no-context Realtime response before the microphone is enabled, ensuring that the selected assistant speaks first.
